@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% @kick.pictures.each do |picture| %>
+  <%= image_tag picture %>
+
+<% end %>
+
+
+
 <p>
   <strong>Tittle:</strong>
   <%= @kick.tittle %>
@@ -25,10 +32,7 @@
   <%= @kick.condition %>
 </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @kick.picture %>
-</p>
+
 
 <p>
   <strong>Buyer:</strong>
@@ -37,7 +41,7 @@
 
 <p>
   <strong>Seller:</strong>
-  <%= @kick.seller_id %>
+  <%= @kick.seller.user_name %>
 </p>
 
 <p>

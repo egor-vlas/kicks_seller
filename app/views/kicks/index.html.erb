@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Kicks</h1>
+<!--<h1>Kicks</h1>
 
 <table>
   <thead>
@@ -26,7 +26,7 @@
         <td><%= kick.price %></td>
         <td><%= kick.brand %></td>
         <td><%= kick.condition %></td>
-        <td><%= kick.picture %></td>
+        
         <td><%= kick.buyer_id %></td>
         <td><%= kick.seller_id %></td>
         <td><%= kick.profile_id %></td>
@@ -40,4 +40,23 @@
 
 <br>
 
-<%= link_to 'New Kick', new_kick_path %>
+<%= link_to 'New Kick', new_kick_path %>-->
+
+<div class="row">
+  <% @kicks.each do |kick| %>
+    <div class="col-md-4">
+      <div class="card">
+        <% if kick.pictures && kick.pictures.first %>
+          <%= image_tag kick.pictures.first, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag "home.jpg", class: "card-img-top" %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= kick.tittle %></p>
+        <p class="card-text"><%= kick.price %></p>
+        <%= link_to 'Show', kick %>
+      </div>
+    </div>
+  <% end %>  
+</div>

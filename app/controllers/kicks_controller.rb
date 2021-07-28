@@ -1,6 +1,6 @@
 class KicksController < ApplicationController
   before_action :set_kick, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /kicks or /kicks.json
   def index
     @kicks = Kick.all
@@ -12,7 +12,15 @@ class KicksController < ApplicationController
 
   # GET /kicks/new
   def new
-    @kick = Kick.new
+    if user_signed_in?
+      if current_user.profile
+        @kick = Kick.new
+      else
+        redirect_to new_profile_path
+      end
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /kicks/1/edit
@@ -22,7 +30,7 @@ class KicksController < ApplicationController
   # POST /kicks or /kicks.json
   def create
     @kick = Kick.new(kick_params)
-
+    @kick.seller_id = current_user.profile.id
     respond_to do |format|
       if @kick.save
         format.html { redirect_to @kick, notice: "Kick was successfully created." }
@@ -64,6 +72,6 @@ class KicksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kick_params
-      params.require(:kick).permit(:tittle, :description, :price, :brand, :condition, :picture, :buyer_id, :seller_id, :profile_id)
+      params.require(:kick).permit(:tittle, :description, :price, :brand, :condition, :buyer_id, :seller_id, :profile_id, pictures: [])
     end
 end

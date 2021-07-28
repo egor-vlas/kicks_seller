@@ -4,3 +4,4 @@
 
 <%= link_to 'Show', @kick %> |
 <%= link_to 'Back', kicks_path %>
+<%= link_to 'Delete', kick_path, method: :delete, data: { confirm: "Are you sure?" } %>
