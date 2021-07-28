@@ -12,7 +12,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
+    if user_signed_in?
+      @profile = Profile.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /profiles/1/edit
@@ -64,6 +68,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :user_name, :user_id)
+      params.require(:profile).permit(:first_name, :last_name, :user_name, :user_id, :picture)
     end
 end

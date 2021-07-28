@@ -6,20 +6,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      
        <li class="nav-item">
-          <a class="nav-link">Users</a>
+         <%= link_to "Users", profiles_path, class: "nav-link" %>
         </li>        
         <li class="nav-item">
           <%= link_to "Shoes", kicks_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        
         <% if user_signed_in? %>
-          <%= link_to "LogOut", destroy_user_session_path, class: "nav-link", method: :delete %>
+          <% if current_user.profile %>
+            <li class="nav-item">
+              <%= link_to current_user.profile.user_name, profile_path(current_user), class: "nav-link" %>
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "LogOut", destroy_user_session_path, class: "nav-link", method: :delete %>
+          </li>  
         <% else %>
-          <%= link_to "LogIn", new_user_session_path, class: "nav-link" %>
-          <%= link_to "SignIn", new_user_registration_path, class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "LogIn", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "SignIn", new_user_registration_path, class: "nav-link" %>
+          </li>
         <% end %>  
-        </li>
+        
       </ul>      
     </div>
   </div>

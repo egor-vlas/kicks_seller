@@ -1,6 +1,6 @@
 class KicksController < ApplicationController
   before_action :set_kick, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   # GET /kicks or /kicks.json
   def index
     @kicks = Kick.all

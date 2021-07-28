@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% @kick.pictures.each do |picture| %>
-  <%= image_tag picture %>
+  <%= image_tag picture, class: "card-img-top" %>
 
 <% end %>
 
@@ -46,8 +46,12 @@
 
 <p>
   <strong>Profile:</strong>
-  <%= @kick.profile_id %>
+  <%= @kick.seller.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_kick_path(@kick) %> |
+
+
+<% if user_signed_in? && current_user.id == @kick.seller.user_id %>
+  <%= link_to 'Edit', edit_kick_path(@kick) %>
+<% end %>  
 <%= link_to 'Back', kicks_path %>

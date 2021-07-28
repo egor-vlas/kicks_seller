@@ -3,4 +3,7 @@ class Kick < ApplicationRecord
   belongs_to :seller, class_name: "Profile"
 
   has_many_attached :pictures
+
+  BRAND = %w{Nike Adidas Puma Converse}
+	CONDITION = %w{New Excellent Mint Used Fair Poor}
 end
