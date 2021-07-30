@@ -18,10 +18,24 @@
         <p class="card-text"><%= kick.tittle %></p>
         <p class="card-text"><%= kick.price %></p>
         <p class="card-text"><%= kick.seller.user_name %></p>
-        <%= link_to 'Show', kick %>
+        <%= link_to '#', class:"custom_btn" do %>
+          <span>My span</span>
+        <% end %>
+        <!--<%= link_to 'Show', kick, class: "custom_btn" %>-->
       </div>
     </div>
   <% end %>  
 </div>
 
 <%= link_to "Sell Kicks", new_kick_path %>
+
+<script>
+    const btn = document.querySelector(".custom_btn");
+    btn.onmousemove = function(e){
+      const x = e.pageX - btn.offsetLeft;
+      const y = e.pageY - btn.offsetTop;
+
+      btn.style.setProperty('--x', x + 'px');
+      btn.style.setProperty('--y', y + 'px');
+    }
+</script>

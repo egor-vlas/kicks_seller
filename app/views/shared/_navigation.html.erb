@@ -17,7 +17,7 @@
         <% if user_signed_in? %>
           <% if current_user.profile %>
             <li class="nav-item">
-              <%= link_to current_user.profile.user_name, profile_path(current_user), class: "nav-link" %>
+             <%= "(Admin)" if  current_user.profile.admin? %> <%= link_to current_user.profile.user_name, profile_path(current_user), class: "nav-link" %>
             </li>
           <% end %>
           <li class="nav-item">

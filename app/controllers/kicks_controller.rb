@@ -1,6 +1,7 @@
 class KicksController < ApplicationController
   before_action :set_kick, only: %i[ show edit update destroy ]
   # before_action :authenticate_user!
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /kicks or /kicks.json
   def index
     @kicks = Kick.all
@@ -73,5 +74,12 @@ class KicksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def kick_params
       params.require(:kick).permit(:tittle, :description, :price, :brand, :condition, :buyer_id, :seller_id, :profile_id, pictures: [])
+    end
+
+    def require_same_user
+      if current_user.id == @kick.seller.user_id
+        flash[:alert] = "You can only edit your shoes!!"
+        redirect_to @kick
+      end
     end
 end

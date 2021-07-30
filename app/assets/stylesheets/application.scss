@@ -51,4 +51,66 @@
 	object-fit: cover;
 }
 
-// profile page css rules
+// profilrs rules
+.custom_container{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 40px 0;
+}
+
+.custom_container .custom_card{
+	position: relative;
+	width: 300px;
+	height: 400px;
+	margin: 20px;
+	overflow: hidden;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.custom_container .custom_card .custom_content{
+	position: absolute;
+	bottom: 0;
+}
+
+// custom btn rules
+.custom_btn {
+	position: relative;
+	display: inline-flex;
+	padding: 10px 30px;
+	background: #363636;
+	color: #fff;
+	text-decoration: none;
+	letter-spacing: 1px;
+	overflow: hidden;
+	span {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+
+
+.custom_btn::before{
+	content: "";
+	position: absolute;
+	top: var(--y);
+	left: var(--x);
+	transform: translate(-50%, -50%);
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: #03bcf4;
+	transition: width 0.5s, height 0.5s;
+}
+
+.custom_btn:hover::before{
+	width: 300px;
+	height: 300px;
+}

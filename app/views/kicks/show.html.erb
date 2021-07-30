@@ -51,7 +51,7 @@
 
 
 
-<% if user_signed_in? && current_user.id == @kick.seller.user_id %>
+<% if user_signed_in? && (current_user.id == @kick.seller.user_id) || current_user.profile.admin? %>
   <%= link_to 'Edit', edit_kick_path(@kick) %>
 <% end %>  
 <%= link_to 'Back', kicks_path %>

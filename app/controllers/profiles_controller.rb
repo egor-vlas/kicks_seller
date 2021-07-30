@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /profiles or /profiles.json
   def index
     @profiles = Profile.all
@@ -69,5 +70,12 @@ class ProfilesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def profile_params
       params.require(:profile).permit(:first_name, :last_name, :user_name, :user_id, :picture)
+    end
+
+    def require_same_user
+      if current_user.id != @profile.id && !current_user.profile.admin?
+        flash[:alert] = "You can only edit your profile!!"
+        redirect_to @profile
+      end
     end
 end

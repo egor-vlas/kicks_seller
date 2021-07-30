@@ -31,16 +31,17 @@
 <div class="row">
   <% @profiles.each do |profile| %>
     <div class="col-md-4">
-      <div class="container">
-        <div class="card">
+      <div class="custom_container">
+        <div class="custom_card">
           <div class="imgBx">
             <%= image_tag profile.picture %>
           </div>
-          <div class="content">
+          <div class="custom_content">
             <div class="contentBx">
               <%= profile.user_name %>          
             </div>
             <ul class="sci">
+              <li><%= link_to 'Show', profile %></li>
               <li><%= link_to 'Show', profile %></li>
             </ul>
           </div>
