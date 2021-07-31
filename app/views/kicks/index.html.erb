@@ -16,13 +16,25 @@
       </div>
       <div class="card-body">
         <p class="card-text"><%= kick.tittle %></p>
-        <p class="card-text"><%= kick.price %></p>
+        <p class="card-text"><%= number_to_currency(kick.price) %></p>
         <p class="card-text"><%= kick.seller.user_name %></p>
-        <%= link_to '#', class:"custom_btn" do %>
+        <%= link_to kick, class:"custom_btn" do %>
           <span>My span</span>
         <% end %>
         <!--<%= link_to 'Show', kick, class: "custom_btn" %>-->
       </div>
+      
+
+
+
+
+
+
+
+
+
+
+
     </div>
   <% end %>  
 </div>

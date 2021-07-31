@@ -53,5 +53,14 @@
 
 <% if user_signed_in? && (current_user.id == @kick.seller.user_id) || current_user.profile.admin? %>
   <%= link_to 'Edit', edit_kick_path(@kick) %>
-<% end %>  
+<% end %>
+
+<!-- messaging settings -->
+<% if current_user.id != @kick.seller.user_id %>
+  <%= link_to "Message #{@kick.seller.user_name}", conversations_path(sender_id: current_user.id, recipient_id: @kick.seller.user_id), method: "post", class: "custom_btn" %>
+  <%= button_to "Add to cart", line_items_path(kick_id: @kick) %>
+<% else %>
+  <%= link_to "Conversations", conversations_path %>
+<% end %>
+
 <%= link_to 'Back', kicks_path %>
