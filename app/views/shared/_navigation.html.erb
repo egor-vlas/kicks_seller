@@ -20,6 +20,18 @@
              <%= "(Admin)" if  current_user.profile.admin? %> <%= link_to current_user.profile.user_name, profile_path(current_user), class: "nav-link" %>
             </li>
           <% end %>
+
+          <% if cart_has_items %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart
+                <%= cart_count_over_one %>
+                </span>
+              <% end %>
+            <% end %>
+
           <li class="nav-item">
             <%= link_to "LogOut", destroy_user_session_path, class: "nav-link", method: :delete %>
           </li>  

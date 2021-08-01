@@ -1,3 +1,42 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+    background: url(home.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .wrapper{
+      width: 900px;
+      height: 700px;
+      font-family: 'Times', cursive;
+      margin: 0 auto;
+      background: rgba( 80, 35, 35, 0.20 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 9.0px );
+        -webkit-backdrop-filter: blur( 9.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    
+    color: white;
+    .greeting{
+        margin-top: 3em;
+        margin-bottom: 20px;
+        font-size: 45px;
+        font-weight: bold;
+    }
+  }
+
+ .custom_field {
+     font-family: 'Times', cursive; 
+    font-size:30px; 
+    margin: 10px 50px; 
+    letter-spacing: 6px; 
+    font-weight: bold;
+ }

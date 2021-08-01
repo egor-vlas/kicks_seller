@@ -20,3 +20,15 @@ document.addEventListener("turbolinks:load", () => {
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", function(){
+	var notification = document.querySelector('#notice');
+	console.log(notification)
+	if (notification) {
+		window.setTimeout(function(){
+			notification.style.display = "none";
+		}, 4000);
+		
+	}
+})
+
